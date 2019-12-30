@@ -20,9 +20,13 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'jasonhornatcrowe_BuildTestApp'
     projectName: 'BuildTestApp'
+
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+
+- task: WhiteSource Bolt@19
+  displayName: 'WhiteSource Bolt'
